@@ -25,21 +25,27 @@ module OmniAuth
 
       uid { access_token.params['user_id'] }
       
+      # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
       info do
         {
+          :nickname   => raw_info['nickname'],
           :first_name => raw_info['first_name'],
-          :last_name  => raw_info['last_name']
+          :last_name  => raw_info['last_name'],
+          :image      => raw_info['image'],
+          :urls       => {
+            'Vkontakte' => "http://vk.com/#{raw_info['domain']}"
+          }
         }
       end
 
       extra do
-        {'raw_info' => raw_info}
+        { 'raw_info' => raw_info }
       end
 
       def raw_info
         # http://vkontakte.ru/developers.php?o=-17680044&p=Description+of+Fields+of+the+fields+Parameter
         fields = ['uid', 'first_name', 'last_name', 'nickname', 'domain', 'sex', 'bdate', 'city', 'country', 'timezone', 'photo', 'photo_big']
-        access_token.get('/method/getProfiles', :params => {:uid => uid, :fields => fields.join(',')}).parsed["response"].first
+        access_token.get('/method/getProfiles', :params => { :uid => uid, :fields => fields.join(',') }).parsed["response"].first
       end
     end
   end
