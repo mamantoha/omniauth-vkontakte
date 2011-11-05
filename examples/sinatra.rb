@@ -10,7 +10,6 @@ use Rack::Session::Cookie
 
 use OmniAuth::Builder do
   provider :vkontakte,  ENV['VKONTAKTE_KEY'], ENV['VKONTAKTE_SECRET']
-  provider :vkontakte,  '1915108', 'BsCEIfRxoDFZU8vZJ65v'
 end
 
 get '/' do
