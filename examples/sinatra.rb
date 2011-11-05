@@ -1,0 +1,27 @@
+require 'rubygems'
+require 'bundler'
+
+Bundler.setup :default, :development, :example
+require 'sinatra'
+require 'omniauth'
+require 'omniauth-vkontakte'
+
+use Rack::Session::Cookie
+
+use OmniAuth::Builder do
+  provider :vkontakte,  ENV['VKONTAKTE_KEY'], ENV['VKONTAKTE_SECRET']
+  provider :vkontakte,  '1915108', 'BsCEIfRxoDFZU8vZJ65v'
+end
+
+get '/' do
+  <<-HTML
+  <ul>
+    <li><a href='/auth/vkontakte'>Sign in with VKontakte</a></li>
+  </ul>
+  HTML
+end
+
+get '/auth/:provider/callback' do
+  content_type 'text/plain'
+  request.env['omniauth.auth'].info.to_hash.inspect
+end
