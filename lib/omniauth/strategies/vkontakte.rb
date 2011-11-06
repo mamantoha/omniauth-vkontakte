@@ -31,7 +31,8 @@ module OmniAuth
           :nickname   => raw_info['nickname'],
           :first_name => raw_info['first_name'],
           :last_name  => raw_info['last_name'],
-          :image      => raw_info['image'],
+          :image      => raw_info['photo'],
+          :location   => location,
           :urls       => {
             'Vkontakte' => "http://vk.com/#{raw_info['domain']}"
           }
@@ -44,9 +45,28 @@ module OmniAuth
 
       def raw_info
         # http://vkontakte.ru/developers.php?o=-17680044&p=Description+of+Fields+of+the+fields+Parameter
-        fields = ['uid', 'first_name', 'last_name', 'nickname', 'sex', 'online', 'bdate' 'photo', 'photo_big', 'domain']
-        access_token.get('/method/getProfiles', :params => { :uid => uid, :fields => fields.join(',') }).parsed["response"].first
+        fields = ['uid', 'first_name', 'last_name', 'nickname', 'sex', 'city', 'country', 'online', 'bdate', 'photo', 'photo_big', 'domain']
+        @raw_info ||= access_token.get('/method/getProfiles', :params => { :uid => uid, :fields => fields.join(',') }).parsed["response"].first
       end
+
+      private
+
+      # http://vkontakte.ru/developers.php?o=-17680044&p=getCountries
+      def get_country
+        country = access_token.get('/method/getCountries', :params => { :cids => raw_info['country'] }).parsed['response']
+        country.first ? country.first['name'] : ''
+      end
+
+      # http://vkontakte.ru/developers.php?o=-17680044&p=getCities
+      def get_city
+        city = access_token.get('/method/getCities', :params => { :cids => raw_info['city'] }).parsed['response']
+        city.first ? city.first['name'] : ''
+      end
+
+      def location
+        "#{get_country}, #{get_city}"
+      end
+
     end
   end
 end
