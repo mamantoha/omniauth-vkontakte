@@ -44,7 +44,7 @@ module OmniAuth
 
       def raw_info
         # http://vkontakte.ru/developers.php?o=-17680044&p=Description+of+Fields+of+the+fields+Parameter
-        fields = ['uid', 'first_name', 'last_name', 'nickname', 'domain', 'sex', 'bdate', 'city', 'country', 'timezone', 'photo', 'photo_big']
+        fields = ['uid', 'first_name', 'last_name', 'nickname', 'sex', 'online', 'bdate' 'photo', 'photo_big', 'domain']
         access_token.get('/method/getProfiles', :params => { :uid => uid, :fields => fields.join(',') }).parsed["response"].first
       end
     end

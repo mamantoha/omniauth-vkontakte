@@ -1,7 +1,7 @@
 # OmniAuth VKontakte
 
-This is the unofficial VKontakte strategy for authenticating to VKontakte. To
-use it, you'll need to sign up for an OAuth2 Application ID and Secret
+This is the unofficial OmniAuth strategy for authenticating to VKontakte via OAuth.
+To use it, you'll need to sign up for an OAuth2 Application ID and Secret
 on the [Vkontakte Developers Page](http://vk.com/developers.php).
 
 ## Basic Usage
@@ -9,6 +9,13 @@ on the [Vkontakte Developers Page](http://vk.com/developers.php).
     use OmniAuth::Builder do
       provider :vkontakte, ENV['API_KEY'], ENV['API_SECRET']
     end
+
+## Ruby
+
+Tested with the following Ruby versions:
+
+- MRI 1.9.3
+- MRI 1.8.7
 
 ## License
 
