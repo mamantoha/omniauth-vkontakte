@@ -53,14 +53,22 @@ module OmniAuth
 
       # http://vkontakte.ru/developers.php?o=-17680044&p=getCountries
       def get_country
-        country = access_token.get('/method/getCountries', :params => { :cids => raw_info['country'] }).parsed['response']
-        country.first ? country.first['name'] : ''
+        if raw_info['country'] && raw_info['country'] != "0"
+          country = access_token.get('/method/getCountries', :params => { :cids => raw_info['country'] }).parsed['response']
+          return country.first ? country.first['name'] : ''
+        else
+          return ''
+        end
       end
 
       # http://vkontakte.ru/developers.php?o=-17680044&p=getCities
       def get_city
-        city = access_token.get('/method/getCities', :params => { :cids => raw_info['city'] }).parsed['response']
-        city.first ? city.first['name'] : ''
+        if raw_info['city'] && raw_info['city'] != "0"
+          city = access_token.get('/method/getCities', :params => { :cids => raw_info['city'] }).parsed['response']
+          return city.first ? city.first['name'] : ''
+        else
+          return ''
+        end
       end
 
       def location
