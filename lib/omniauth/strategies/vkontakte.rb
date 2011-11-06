@@ -72,7 +72,7 @@ module OmniAuth
       end
 
       def location
-        "#{get_country}, #{get_city}"
+        @location ||= "#{get_country}, #{get_city}"
       end
 
     end
