@@ -28,6 +28,7 @@ module OmniAuth
       # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
       info do
         {
+          :name       => raw_info['name'],
           :nickname   => raw_info['nickname'],
           :first_name => raw_info['first_name'],
           :last_name  => raw_info['last_name'],
