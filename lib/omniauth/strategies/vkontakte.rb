@@ -11,6 +11,8 @@ module OmniAuth
     # @example Basic Usage
     #     use OmniAuth::Strategies::Vkontakte, 'API Key', 'Secret Key'
     class Vkontakte < OmniAuth::Strategies::OAuth2
+      DEFAULT_SCOPE = ''
+      
       option :name, 'vkontakte'
       
       option :client_options, {
@@ -48,6 +50,12 @@ module OmniAuth
         # http://vkontakte.ru/developers.php?o=-17680044&p=Description+of+Fields+of+the+fields+Parameter
         fields = ['uid', 'first_name', 'last_name', 'nickname', 'sex', 'city', 'country', 'online', 'bdate', 'photo', 'photo_big', 'domain']
         @raw_info ||= access_token.get('/method/getProfiles', :params => { :uid => uid, :fields => fields.join(',') }).parsed["response"].first
+      end
+
+      def authorize_params
+        super.tap do |params|
+          params[:scope] ||= DEFAULT_SCOPE
+        end
       end
 
       private

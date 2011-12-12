@@ -6,10 +6,12 @@ require 'sinatra'
 require 'omniauth'
 require 'omniauth-vkontakte'
 
+SCOPE = 'friends,audio'
+
 use Rack::Session::Cookie
 
 use OmniAuth::Builder do
-  provider :vkontakte,  ENV['VKONTAKTE_KEY'], ENV['VKONTAKTE_SECRET']
+  provider :vkontakte,  ENV['VKONTAKTE_KEY'], ENV['VKONTAKTE_SECRET'], :scope => SCOPE
 end
 
 get '/' do
