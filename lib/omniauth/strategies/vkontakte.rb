@@ -12,9 +12,9 @@ module OmniAuth
     #     use OmniAuth::Strategies::Vkontakte, 'API Key', 'Secret Key'
     class Vkontakte < OmniAuth::Strategies::OAuth2
       DEFAULT_SCOPE = ''
-      
+
       option :name, 'vkontakte'
-      
+
       option :client_options, {
         :site          => 'https://api.vk.com/',
         :token_url     => '/oauth/token',
@@ -26,7 +26,7 @@ module OmniAuth
       }
 
       uid { access_token.params['user_id'] }
-      
+
       # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
       info do
         {
