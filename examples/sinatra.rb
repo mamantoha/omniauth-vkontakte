@@ -11,7 +11,7 @@ SCOPE = 'friends,audio'
 use Rack::Session::Cookie
 
 use OmniAuth::Builder do
-  provider :vkontakte,  ENV['VKONTAKTE_KEY'], ENV['VKONTAKTE_SECRET'], :scope => SCOPE
+  provider :vkontakte,  ENV['VKONTAKTE_KEY'], ENV['VKONTAKTE_SECRET'], :scope => SCOPE, :display => 'popup'
 end
 
 get '/' do

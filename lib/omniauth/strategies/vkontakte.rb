@@ -11,7 +11,7 @@ module OmniAuth
     # @example Basic Usage
     #     use OmniAuth::Strategies::Vkontakte, 'API Key', 'Secret Key'
     class Vkontakte < OmniAuth::Strategies::OAuth2
-      DEFAULT_SCOPE = ''
+      DEFAULT_SCOPE = 'friends,audio'
 
       option :name, 'vkontakte'
 
@@ -24,6 +24,8 @@ module OmniAuth
       option :access_token_options, {
         :param_name => 'access_token',
       }
+
+      option :authorize_options, [:scope, :display]
 
       uid { access_token.params['user_id'] }
 
@@ -52,8 +54,16 @@ module OmniAuth
         @raw_info ||= access_token.get('/method/getProfiles', :params => { :uid => uid, :fields => fields.join(',') }).parsed["response"].first
       end
 
+      ##
+      # You can pass +display+or +scope+ params to the auth request, if
+      # you need to set them dynamically.
+      #
+      # /auth/vkontakte?display=popup
+      #
       def authorize_params
         super.tap do |params|
+          params.merge!(:display => request.params['display']) if request.params['display']
+          params.merge!(:scope => request.params['scope']) if request.params['scope']
           params[:scope] ||= DEFAULT_SCOPE
         end
       end
