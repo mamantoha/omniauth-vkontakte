@@ -2,7 +2,7 @@
 require File.expand_path('../lib/omniauth-vkontakte/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.add_dependency 'omniauth', '~> 1.0'
+  gem.add_dependency 'omniauth', '~> 1.1.0'
   gem.add_dependency 'omniauth-oauth2', '~> 1.0'
   gem.add_dependency 'multi_json'
 
