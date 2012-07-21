@@ -11,7 +11,7 @@ module OmniAuth
     # @example Basic Usage
     #     use OmniAuth::Strategies::Vkontakte, 'API Key', 'Secret Key'
     class Vkontakte < OmniAuth::Strategies::OAuth2
-      DEFAULT_SCOPE = ''
+      DEFAULT_SCOPE = 'nofity'
 
       option :name, 'vkontakte'
 
