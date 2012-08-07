@@ -46,6 +46,10 @@ Tested with the following Ruby versions:
 - MRI 1.9.3
 - MRI 1.8.7
 
+## Contributing to omniauth-vkontakte
+
+* Fork, fix, then send me a pull request.
+
 ## License
 
 Copyright (c) 2011, 2012 Anton Maminov
