@@ -26,6 +26,7 @@ module OmniAuth
       }
 
       option :authorize_options, [:scope, :display]
+      option :provider_ignores_state, true
 
       uid { access_token.params['user_id'] }
 
