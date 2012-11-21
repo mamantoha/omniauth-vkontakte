@@ -6,7 +6,7 @@ module OmniAuth
     # Authenticate to Vkontakte utilizing OAuth 2.0 and retrieve
     # basic user information.
     # documentation available here:
-    # http://vkontakte.ru/developers.php?o=-17680044&p=Authorization&s=0
+    # http://vk.com/developers.php?o=-17680044&p=Authorization&s=0
     #
     # @example Basic Usage
     #     use OmniAuth::Strategies::Vkontakte, 'API Key', 'Secret Key'
@@ -22,10 +22,11 @@ module OmniAuth
       }
 
       option :access_token_options, {
-        :param_name => 'access_token',
+        :param_name => 'access_token'
       }
 
       option :authorize_options, [:scope, :display]
+
       option :provider_ignores_state, true
 
       uid { access_token.params['user_id'] }
@@ -50,13 +51,21 @@ module OmniAuth
       end
 
       def raw_info
-        # http://vkontakte.ru/developers.php?o=-17680044&p=Description+of+Fields+of+the+fields+Parameter
+        # http://vk.com/developers.php?o=-17680044&p=Description+of+Fields+of+the+fields+Parameter
         fields = ['uid', 'first_name', 'last_name', 'nickname', 'sex', 'city', 'country', 'online', 'bdate', 'photo', 'photo_big', 'domain']
-        @raw_info ||= access_token.get('/method/getProfiles', :params => { :uid => uid, :fields => fields.join(',') }).parsed["response"].first
+
+        @raw_info ||= begin
+          params = {
+            :uid          => uid,
+            :fields       => fields.join(','),
+            :access_token => access_token.token
+          }
+          result = access_token.get('/method/getProfiles', :params => params).parsed["response"].first
+        end
       end
 
       ##
-      # You can pass +display+or +scope+ params to the auth request, if
+      # You can pass +display+ or +scope+ params to the auth request, if
       # you need to set them dynamically.
       #
       # /auth/vkontakte?display=popup
@@ -77,20 +86,28 @@ module OmniAuth
 
       private
 
-      # http://vkontakte.ru/developers.php?o=-17680044&p=getCountries
+      # http://vk.com/developers.php?o=-17680044&p=getCountries
       def get_country
         if raw_info['country'] && raw_info['country'] != "0"
-          country = access_token.get('/method/getCountries', :params => { :cids => raw_info['country'] }).parsed['response']
+          params = {
+            :cids         => raw_info['country'],
+            :access_token => access_token.token
+          }
+          country = access_token.get('/method/getCountries', :params => params).parsed['response']
           return country.first ? country.first['name'] : ''
         else
           return ''
         end
       end
 
-      # http://vkontakte.ru/developers.php?o=-17680044&p=getCities
+      # http://vk.com/developers.php?o=-17680044&p=getCities
       def get_city
         if raw_info['city'] && raw_info['city'] != "0"
-          city = access_token.get('/method/getCities', :params => { :cids => raw_info['city'] }).parsed['response']
+          params = {
+            :cids         => raw_info['city'],
+            :access_token => access_token.token
+          }
+          city = access_token.get('/method/getCities', :params => params).parsed['response']
           return city.first ? city.first['name'] : ''
         else
           return ''
