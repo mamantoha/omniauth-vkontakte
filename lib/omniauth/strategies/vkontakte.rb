@@ -60,7 +60,8 @@ module OmniAuth
             :fields       => fields.join(','),
             :access_token => access_token.token
           }
-          result = access_token.get('/method/getProfiles', :params => params).parsed["response"].first
+          result = access_token.get('/method/getProfiles', :params => params).parsed["response"]
+          result && result.first ? result.first : nil
         end
       end
 
@@ -94,9 +95,9 @@ module OmniAuth
             :access_token => access_token.token
           }
           country = access_token.get('/method/getCountries', :params => params).parsed['response']
-          return country.first ? country.first['name'] : ''
+          country && country.first ? country.first['name'] : ''
         else
-          return ''
+          ''
         end
       end
 
@@ -108,9 +109,9 @@ module OmniAuth
             :access_token => access_token.token
           }
           city = access_token.get('/method/getCities', :params => params).parsed['response']
-          return city.try(:first) ? city.first['name'] : ''
+          city && city.first ? city.first['name'] : ''
         else
-          return ''
+          ''
         end
       end
 
