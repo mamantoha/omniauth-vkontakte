@@ -108,7 +108,7 @@ module OmniAuth
             :access_token => access_token.token
           }
           city = access_token.get('/method/getCities', :params => params).parsed['response']
-          return city.first ? city.first['name'] : ''
+          return city.try(:first) ? city.first['name'] : ''
         else
           return ''
         end
