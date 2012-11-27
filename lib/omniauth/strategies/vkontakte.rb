@@ -94,7 +94,7 @@ module OmniAuth
             :cids         => raw_info['country'],
             :access_token => access_token.token
           }
-          country = access_token.get('/method/getCountries', :params => params).parsed['response']
+          country = access_token.get('/method/places.getCountryById', :params => params).parsed['response']
           country && country.first ? country.first['name'] : ''
         else
           ''
@@ -108,7 +108,7 @@ module OmniAuth
             :cids         => raw_info['city'],
             :access_token => access_token.token
           }
-          city = access_token.get('/method/getCities', :params => params).parsed['response']
+          city = access_token.get('/method/places.getCityById', :params => params).parsed['response']
           city && city.first ? city.first['name'] : ''
         else
           ''
