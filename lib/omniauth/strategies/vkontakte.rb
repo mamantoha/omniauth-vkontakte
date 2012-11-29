@@ -94,7 +94,6 @@ module OmniAuth
             :cids         => raw_info['country'],
             :access_token => access_token.token,
           }
-          puts access_token.get('/method/places.getCountryById', :params => params).body
           country = access_token.get('/method/places.getCountryById', :params => params).parsed['response']
           country && country.first ? country.first['name'] : ''
         else
