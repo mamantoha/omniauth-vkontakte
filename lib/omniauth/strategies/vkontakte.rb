@@ -41,7 +41,7 @@ module OmniAuth
           :image      => raw_info['photo'],
           :location   => location,
           :urls       => {
-            'Vkontakte' => "http://vk.com/#{raw_info['domain']}"
+            'Vkontakte' => "http://vk.com/#{raw_info['screen_name']}"
           }
         }
       end
@@ -52,15 +52,15 @@ module OmniAuth
 
       def raw_info
         # http://vk.com/developers.php?o=-17680044&p=Description+of+Fields+of+the+fields+Parameter
-        fields = ['uid', 'first_name', 'last_name', 'nickname', 'sex', 'city', 'country', 'online', 'bdate', 'photo', 'photo_big', 'domain']
+        fields = ['uid', 'first_name', 'last_name', 'nickname', 'screen_name', 'sex', 'city', 'country', 'online', 'bdate', 'photo', 'photo_big']
 
         @raw_info ||= begin
           params = {
-            :uid          => uid,
+            :uids         => uid,
             :fields       => fields.join(','),
-            :access_token => access_token.token
+            #:access_token => access_token.token,
           }
-          result = access_token.get('/method/getProfiles', :params => params).parsed["response"]
+          result = access_token.get('/method/users.get', :params => params).parsed["response"]
           result && result.first ? result.first : nil
         end
       end
@@ -92,8 +92,9 @@ module OmniAuth
         if raw_info['country'] && raw_info['country'] != "0"
           params = {
             :cids         => raw_info['country'],
-            :access_token => access_token.token
+            :access_token => access_token.token,
           }
+          puts access_token.get('/method/places.getCountryById', :params => params).body
           country = access_token.get('/method/places.getCountryById', :params => params).parsed['response']
           country && country.first ? country.first['name'] : ''
         else
@@ -106,7 +107,7 @@ module OmniAuth
         if raw_info['city'] && raw_info['city'] != "0"
           params = {
             :cids         => raw_info['city'],
-            :access_token => access_token.token
+            :access_token => access_token.token,
           }
           city = access_token.get('/method/places.getCityById', :params => params).parsed['response']
           city && city.first ? city.first['name'] : ''
