@@ -29,7 +29,7 @@ module OmniAuth
 
       option :provider_ignores_state, true
 
-      uid { access_token.params['user_id'] }
+      uid { access_token.params['user_id'].to_s }
 
       # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
       info do
