@@ -34,7 +34,7 @@ module OmniAuth
       # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
       info do
         {
-          :name       => "#{raw_info['first_name']} #{raw_info['last_name']}".strip,
+          :name       => [raw_info['first_name'], raw_info['last_name']].map(&:strip).reject(&:blank?).join(' '),
           :nickname   => raw_info['nickname'],
           :first_name => raw_info['first_name'],
           :last_name  => raw_info['last_name'],
@@ -116,7 +116,7 @@ module OmniAuth
       end
 
       def location
-        @location ||= "#{get_country}, #{get_city}"
+        @location ||= [get_country, get_city].map(&:strip).reject(&:blank?).join(', ')
       end
 
     end
