@@ -27,12 +27,18 @@ module OmniAuth
 
       option :authorize_options, [:scope, :display]
 
+<<<<<<< HEAD
       uid { access_token.params['user_id'] }
+=======
+      option :provider_ignores_state, true
+
+      uid { access_token.params['user_id'].to_s }
+>>>>>>> 0d3c81d18e812a2034100e1743827c5f31c4b5db
 
       # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
       info do
         {
-          :name       => "#{raw_info['first_name']} #{raw_info['last_name']}".strip,
+          :name       => [raw_info['first_name'], raw_info['last_name']].map(&:strip).reject(&:empty?).join(' '),
           :nickname   => raw_info['nickname'],
           :first_name => raw_info['first_name'],
           :last_name  => raw_info['last_name'],
@@ -114,7 +120,7 @@ module OmniAuth
       end
 
       def location
-        @location ||= "#{get_country}, #{get_city}"
+        @location ||= [get_country, get_city].map(&:strip).reject(&:empty?).join(', ')
       end
 
     end
