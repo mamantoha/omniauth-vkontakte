@@ -27,13 +27,8 @@ module OmniAuth
 
       option :authorize_options, [:scope, :display]
 
-<<<<<<< HEAD
-      uid { access_token.params['user_id'] }
-=======
-      option :provider_ignores_state, true
 
       uid { access_token.params['user_id'].to_s }
->>>>>>> 0d3c81d18e812a2034100e1743827c5f31c4b5db
 
       # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
       info do
