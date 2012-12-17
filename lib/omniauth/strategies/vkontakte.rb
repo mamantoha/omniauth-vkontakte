@@ -11,7 +11,7 @@ module OmniAuth
     # @example Basic Usage
     #     use OmniAuth::Strategies::Vkontakte, 'API Key', 'Secret Key'
     class Vkontakte < OmniAuth::Strategies::OAuth2
-      DEFAULT_SCOPE = 'notify'
+      DEFAULT_SCOPE = ''
 
       option :name, 'vkontakte'
 
@@ -26,8 +26,6 @@ module OmniAuth
       }
 
       option :authorize_options, [:scope, :display]
-
-      option :provider_ignores_state, true
 
       uid { access_token.params['user_id'] }
 

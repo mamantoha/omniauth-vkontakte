@@ -27,18 +27,6 @@ use OmniAuth::Builder do
 end
 ```
 
-### Update to omniauth-oauth2 1.1.0
-Application raise "invalid credensials" when login. The reason is [csrf protection](https://github.com/intridea/omniauth-oauth2/pull/18) in omniauth-oauth2 1.1.0.
-Vkontakte doesn't return `state` parameter with the code, if the `scope` doesn't include `notify`.
-
-The solution is to specify at least the `notify` in parameter `scope`, like so:
-
-```ruby
-use OmniAuth::Builder do
-  provider :vkontakte, ENV['API_KEY'], ENV['API_SECRET'], :scope => 'notify'
-end
-```
-
 ## Supported Rubies
 
 Tested with the following Ruby versions:

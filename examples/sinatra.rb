@@ -6,7 +6,7 @@ require 'sinatra'
 require 'omniauth'
 require 'omniauth-vkontakte'
 
-SCOPE = 'friends,audio,notify'
+SCOPE = 'friends,audio'
 
 use Rack::Session::Cookie
 
