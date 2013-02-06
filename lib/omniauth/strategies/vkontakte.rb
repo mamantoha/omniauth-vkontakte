@@ -10,6 +10,7 @@ module OmniAuth
     #
     # @example Basic Usage
     #     use OmniAuth::Strategies::Vkontakte, 'API Key', 'Secret Key'
+    #
     class Vkontakte < OmniAuth::Strategies::OAuth2
       DEFAULT_SCOPE = ''
 
@@ -26,7 +27,6 @@ module OmniAuth
       }
 
       option :authorize_options, [:scope, :display]
-
 
       uid { access_token.params['user_id'].to_s }
 
@@ -57,14 +57,14 @@ module OmniAuth
           params = {
             :uids         => uid,
             :fields       => fields.join(','),
-            #:access_token => access_token.token,
+            :access_token => access_token.token,
           }
-          result = access_token.get('/method/users.get', :params => params).parsed["response"]
+
+          result = access_token.post('/method/users.get', :params => params).parsed["response"]
           result && result.first ? result.first : nil
         end
       end
 
-      ##
       # You can pass +display+ or +scope+ params to the auth request, if
       # you need to set them dynamically.
       #
@@ -72,7 +72,7 @@ module OmniAuth
       #
       def authorize_params
         super.tap do |params|
-          # just a copypaste from ominauth-facebook
+          # just a copypaste from omniauth-facebook
           %w[display state scope].each do |v|
             if request.params[v]
               params[v.to_sym] = request.params[v]
@@ -93,7 +93,8 @@ module OmniAuth
             :cids         => raw_info['country'],
             :access_token => access_token.token,
           }
-          country = access_token.get('/method/places.getCountryById', :params => params).parsed['response']
+
+          country = access_token.post('/method/places.getCountryById', :params => params).parsed['response']
           country && country.first ? country.first['name'] : ''
         else
           ''
@@ -107,7 +108,7 @@ module OmniAuth
             :cids         => raw_info['city'],
             :access_token => access_token.token,
           }
-          city = access_token.get('/method/places.getCityById', :params => params).parsed['response']
+          city = access_token.post('/method/places.getCityById', :params => params).parsed['response']
           city && city.first ? city.first['name'] : ''
         else
           ''
