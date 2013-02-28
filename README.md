@@ -27,6 +27,52 @@ use OmniAuth::Builder do
 end
 ```
 
+## Auth Hash
+
+Here's an example *Auth Hash* available in `request.env['omniauth.auth']`:
+
+```ruby
+{
+  :credentials => {
+    :expires => true,
+    :expires_at => 1361547867,
+    :token => "ABCD..."
+  }, 
+  :extra => {
+    :raw_info => {
+      :bdate => "1.2.1981",
+      :city => "1",
+      :country => "1",
+      :first_name => "Maksim",
+      :last_name => "Berjoza",
+      :nickname => "",
+      :online => 0,
+      :photo => "http://cs416330.userapi.com/v416330678/316f/ues1IwqID-I.jpg",
+      :photo_big => "http://cs416330.userapi.com/v416330678/316c/pFvgPJpenjo.jpg",
+      :screen_name => "id677678",
+      :sex => 2,
+      :uid => 677678
+    }
+  },
+  :info => {
+    :first_name => "Maksim",
+    :image => "http://cs416330.userapi.com/v416330678/316f/ues1IwqID-I.jpg",
+    :last_name => "Berjoza",
+    :location => "Россия, Москва",
+    :name => "Maksim Berjoza", 
+    :nickname => "",
+    :urls => {
+      :Vkontakte => "http://vk.com/id677678"
+    }
+  },
+  :provider => "vkontakte",
+  :uid => 677678
+}
+```
+
+The precise information available may depend on the permissions which you request.
+
+
 ## Supported Rubies
 
 Tested with the following Ruby versions:
