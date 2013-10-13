@@ -10,6 +10,7 @@ module OmniAuth
     #
     # @example Basic Usage
     #     use OmniAuth::Strategies::Vkontakte, 'API Key', 'Secret Key'
+    #
     class Vkontakte < OmniAuth::Strategies::OAuth2
       API_VERSION = '5.2'
       DEFAULT_SCOPE = ''
