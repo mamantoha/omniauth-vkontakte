@@ -66,7 +66,7 @@ Here's an example *Auth Hash* available in `request.env['omniauth.auth']`:
     }
   },
   :provider => "vkontakte",
-  :uid => 677678
+  :uid => "677678"
 }
 ```
 
