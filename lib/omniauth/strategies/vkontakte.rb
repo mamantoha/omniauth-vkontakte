@@ -1,5 +1,6 @@
 require 'omniauth/strategies/oauth2'
 require 'multi_json'
+require 'pp'
 
 module OmniAuth
   module Strategies
@@ -25,7 +26,7 @@ module OmniAuth
 
       option :authorize_options, [:scope, :display]
 
-      uid { access_token.params['user_id'].to_s }
+      uid { raw_info['id'].to_s }
 
       # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
       info do
@@ -43,17 +44,19 @@ module OmniAuth
       end
 
       extra do
-        { 'raw_info' => raw_info }
+        {
+          'raw_info' => raw_info
+        }
       end
 
       def raw_info
+        access_token.options[:mode] = :query
+        access_token.options[:param_name] = :access_token
         @raw_info ||= begin
           params = {
-            :user_ids => uid,
             :fields   => info_options,
             :lang     => lang_option,
             :v        => API_VERSION,
-            #:access_token => access_token.token,
           }
 
           result = access_token.get('/method/users.get', :params => params).parsed["response"]
