@@ -35,7 +35,7 @@ module OmniAuth
           :nickname   => raw_info['nickname'],
           :first_name => raw_info['first_name'],
           :last_name  => raw_info['last_name'],
-          :image      => raw_info['photo'],
+          :image      => image_url,
           :location   => location,
           :urls       => {
             'Vkontakte' => "http://vk.com/#{raw_info['screen_name']}"
@@ -64,15 +64,6 @@ module OmniAuth
         end
       end
 
-      def info_options
-        # http://vk.com/dev/fields
-        fields = ['nickname', 'screen_name', 'sex', 'city', 'country', 'online', 'bdate', 'photo', 'photo_big']
-        return fields.join(',')
-      end
-
-      def lang_option
-        options[:lang] || ''
-      end
 
       # You can pass +display+ or +scope+ params to the auth request, if
       # you need to set them dynamically.
@@ -96,6 +87,29 @@ module OmniAuth
       end
 
       private
+
+      def info_options
+        # http://vk.com/dev/fields
+        fields = ['nickname', 'screen_name', 'sex', 'city', 'country', 'online', 'bdate', 'photo_50', 'photo_100', 'photo_200_orig']
+        return fields.join(',')
+      end
+
+      def lang_option
+        options[:lang] || ''
+      end
+
+      def image_url
+        case options[:image_size]
+        when 'mini'
+          raw_info['photo_50']
+        when 'bigger'
+          raw_info['photo_100']
+        when 'original'
+          raw_info['photo_200_orig']
+        else
+          raw_info['photo_50']
+        end
+      end
 
       # http://vk.com/dev/database.getCountriesById
       def get_country

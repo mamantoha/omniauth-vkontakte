@@ -16,19 +16,25 @@ end
 You can configure several options, which you pass in to the `provider` method via a `Hash`:
 
 * `scope`: a comma-separated list of access permissions you want to request from the user. [Read the Vkontakte docs for more details](http://vk.com/dev/permissions)
-* `display`: the display context to show the authentication page. Options are: `page`, `popup` and `mobile`.
-* `lang`: specifies the language. Optional options are: `ru`, `ua`, `be`, `en`, `es`, `fi`, `de`, `it`.
+* `display`: the display context to show the authentication page. Valid options include `page`, `popup` and `mobile`.
+* `lang`: specifies the language. Optional options include `ru`, `ua`, `be`, `en`, `es`, `fi`, `de`, `it`.
+* `image_size`: defines the size of the user's image. Valid options include `mini`(50x50), `bigger`(100x100) and `original`(200x200). Default is `mini`.
 
-For example, to request `friends`, `audio` and `photos` permissions and display the authentication page in a popup window:
+Here's an example of a possible configuration:
 
 ```ruby
 use OmniAuth::Builder do
   provider :vkontakte, ENV['API_KEY'], ENV['API_SECRET'],
-    :scope => 'friends,audio,photos', :display => 'popup', :lang => 'en'
+    {
+      :scope => 'friends,audio,photos',
+      :display => 'popup',
+      :lang => 'en',
+      :image_size => 'original'
+    }
 end
 ```
 
-## Auth Hash
+## Authentication Hash
 
 Here's an example *Auth Hash* available in `request.env['omniauth.auth']`:
 
