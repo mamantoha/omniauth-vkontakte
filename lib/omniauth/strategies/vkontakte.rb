@@ -13,7 +13,10 @@ module OmniAuth
     #     use OmniAuth::Strategies::Vkontakte, 'API Key', 'Secret Key'
     #
     class Vkontakte < OmniAuth::Strategies::OAuth2
+      class NoRawData < StandardError; end
+
       API_VERSION = '5.2'
+
       DEFAULT_SCOPE = ''
 
       option :name, 'vkontakte'
@@ -60,7 +63,9 @@ module OmniAuth
           }
 
           result = access_token.get('/method/users.get', :params => params).parsed["response"]
-          (result && result.first) ? result.first : nil
+
+          raise NoRawData, result unless (result.is_a?(Array) and result.first)
+          result.first
         end
       end
 
@@ -145,6 +150,11 @@ module OmniAuth
         @location ||= [get_country, get_city].map(&:strip).reject(&:empty?).join(', ')
       end
 
+      def callback_phase
+        super
+      rescue NoRawData => e
+        fail!(:no_raw_data, e)
+      end
     end
   end
 end
