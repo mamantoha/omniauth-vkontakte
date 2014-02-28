@@ -2,7 +2,7 @@
 
 This is the unofficial [OmniAuth](https://github.com/intridea/omniauth) strategy for authenticating to VKontakte via OAuth.
 To use it, you'll need to sign up for an OAuth2 Application ID and Secret
-on the [Vkontakte Developers Page](http://vk.com/developers.php).
+on the [Vkontakte Developers Page](http://vk.com/dev).
 
 ## Basic Usage
 
@@ -15,59 +15,61 @@ end
 ## Configuring
 You can configure several options, which you pass in to the `provider` method via a `Hash`:
 
-* `scope`: A comma-separated list of permissions you want to request from the user. [Read the Vkontakte docs for more details](http://vk.com/developers.php?oid=-1&p=%D0%9F%D1%80%D0%B0%D0%B2%D0%B0_%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0_%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B9)
-* `display`: The display context to show the authentication page. Options are: `page`, `popup`, `touch` and `wap`.
+* `scope`: a comma-separated list of access permissions you want to request from the user. [Read the Vkontakte docs for more details](http://vk.com/dev/permissions)
+* `display`: the display context to show the authentication page. Valid options include `page`, `popup` and `mobile`.
+* `lang`: specifies the language. Optional options include `ru`, `ua`, `be`, `en`, `es`, `fi`, `de`, `it`.
+* `image_size`: defines the size of the user's image. Valid options include `mini`(50x50), `bigger`(100x100) and `original`(200x200). Default is `mini`.
 
-For example, to request `friends`, `audio` and `photos` permissions and display the authentication page in a popup window:
+Here's an example of a possible configuration:
 
 ```ruby
 use OmniAuth::Builder do
   provider :vkontakte, ENV['API_KEY'], ENV['API_SECRET'],
-    :scope => 'friends,audio,photos', :display => 'popup'
+    {
+      :scope => 'friends,audio,photos',
+      :display => 'popup',
+      :lang => 'en',
+      :image_size => 'original'
+    }
 end
 ```
 
-## Auth Hash
+## Authentication Hash
 
 Here's an example *Auth Hash* available in `request.env['omniauth.auth']`:
 
 ```ruby
-{
-  :credentials => {
-    :expires => true,
-    :expires_at => 1361547867,
-    :token => "ABCD..."
-  }, 
-  :extra => {
-    :raw_info => {
-      :bdate => "1.2.1981",
-      :city => "1",
-      :country => "1",
-      :first_name => "Maksim",
-      :last_name => "Berjoza",
-      :nickname => "",
-      :online => 0,
-      :photo => "http://cs416330.userapi.com/v416330678/316f/ues1IwqID-I.jpg",
-      :photo_big => "http://cs416330.userapi.com/v416330678/316c/pFvgPJpenjo.jpg",
-      :screen_name => "id677678",
-      :sex => 2,
-      :uid => 677678
-    }
-  },
-  :info => {
-    :first_name => "Maksim",
-    :image => "http://cs416330.userapi.com/v416330678/316f/ues1IwqID-I.jpg",
-    :last_name => "Berjoza",
-    :location => "Россия, Москва",
-    :name => "Maksim Berjoza", 
-    :nickname => "",
-    :urls => {
-      :Vkontakte => "http://vk.com/id677678"
-    }
-  },
-  :provider => "vkontakte",
-  :uid => 677678
-}
+{"provider"=>"vkontakte",
+ "uid"=>"1",
+ "info"=>
+  {"name"=>"Павел Дуров",
+   "nickname"=>"",
+   "first_name"=>"Павел",
+   "last_name"=>"Дуров",
+   "image"=>"http://cs7001.vk.me/c7003/v7003079/374b/53lwetwOxD8.jpg",
+   "location"=>"Росiя, Санкт-Петербург",
+   "urls"=>{"Vkontakte"=>"http://vk.com/durov"}},
+ "credentials"=>
+  {"token"=>
+    "187041a618229fdaf16613e96e1caabc1e86e46bbfad228de41520e63fe45873684c365a14417289599f3",
+   "expires_at"=>1381826003,
+   "expires"=>true},
+ "extra"=>
+  {"raw_info"=>
+    {"id"=>1,
+     "first_name"=>"Павел",
+     "last_name"=>"Дуров",
+     "sex"=>2,
+     "nickname"=>"",
+     "screen_name"=>"durov",
+     "bdate"=>"10.10.1984",
+     "city"=>"2",
+     "country"=>"1",
+     "photo"=>"http://cs7001.vk.me/c7003/v7003079/374b/53lwetwOxD8.jpg",
+     "photo_big"=>"http://cs7001.vk.me/c7003/v7003736/3a08/mEqSflTauxA.jpg",
+     "online"=>1,
+     "online_app"=>"3140623",
+     "online_mobile"=>1}}}
 ```
 
 The precise information available may depend on the permissions which you request.
@@ -77,8 +79,8 @@ The precise information available may depend on the permissions which you reques
 
 Tested with the following Ruby versions:
 
+- MRI 2.0.0
 - MRI 1.9.3
-- MRI 1.8.7
 
 ## Contributing to omniauth-vkontakte
 
