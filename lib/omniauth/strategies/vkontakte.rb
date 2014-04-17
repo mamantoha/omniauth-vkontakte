@@ -36,6 +36,7 @@ module OmniAuth
         {
           :name       => [raw_info['first_name'], raw_info['last_name']].map(&:strip).reject(&:empty?).join(' '),
           :nickname   => raw_info['nickname'],
+          :email      => access_token.params["email"],
           :first_name => raw_info['first_name'],
           :last_name  => raw_info['last_name'],
           :image      => image_url,
