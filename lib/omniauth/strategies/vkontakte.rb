@@ -52,6 +52,18 @@ module OmniAuth
           'raw_info' => raw_info
         }
       end
+      
+      def build_access_token
+        token = super
+        # indicates that `offline` permission was granted, no need to the token refresh
+        if token.expires_in == 0
+          ::OAuth2::AccessToken.new(token.client, token.token,
+            token.params.reject{|k,_| [:refresh_token, :expires_in, :expires_at, :expires].include? k.to_sym}
+          )
+        else
+          token
+        end
+      end
 
       def raw_info
         access_token.options[:mode] = :query
@@ -64,7 +76,7 @@ module OmniAuth
           }
 
           result = access_token.get('/method/users.get', :params => params).parsed["response"]
-
+	  Rails.logger.info result
           raise NoRawData, result unless (result.is_a?(Array) and result.first)
           result.first
         end
