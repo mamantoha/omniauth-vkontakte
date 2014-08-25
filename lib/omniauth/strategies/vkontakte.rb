@@ -75,7 +75,7 @@ module OmniAuth
           }
 
           result = access_token.get('/method/users.get', :params => params).parsed["response"]
-
+	  Rails.logger.info result
           raise NoRawData, result unless (result.is_a?(Array) and result.first)
           result.first
         end
