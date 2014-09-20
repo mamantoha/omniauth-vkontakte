@@ -18,7 +18,7 @@ You can configure several options, which you pass in to the `provider` method vi
 * `scope`: a comma-separated list of access permissions you want to request from the user. [Read the Vkontakte docs for more details](http://vk.com/dev/permissions)
 * `display`: the display context to show the authentication page. Valid options include `page`, `popup` and `mobile`.
 * `lang`: specifies the language. Optional options include `ru`, `ua`, `be`, `en`, `es`, `fi`, `de`, `it`.
-* `image_size`: defines the size of the user's image. Valid options include `mini`(50x50), `bigger`(100x100) and `original`(200x200). Default is `mini`.
+* `image_size`: defines the size of the user's image. Valid options include `mini`(50x50), `bigger`(100x100), `bigger_x2`(200x200), `original`(200x*) and `original_x2`(400x*). Default is `mini`.
 * `info_fields`: specify which fields should be added to AuthHash when
   getting the user's info. Value should be a comma-separated string as per http://vk.com/dev/fields.
 

@@ -96,7 +96,7 @@ module OmniAuth
 
       def info_options
         # http://vk.com/dev/fields
-        fields = ['nickname', 'screen_name', 'sex', 'city', 'country', 'online', 'bdate', 'photo_50', 'photo_100', 'photo_200_orig']
+        fields = %w[nickname screen_name sex city country online bdate photo_50 photo_100 photo_200 photo_200_orig photo_400_orig]
         fields.concat(options[:info_fields].split(',')) if options[:info_fields] 
         return fields.join(',')
       end
@@ -111,8 +111,12 @@ module OmniAuth
           raw_info['photo_50']
         when 'bigger'
           raw_info['photo_100']
+        when 'bigger_x2'
+          raw_info['photo_200']
         when 'original'
           raw_info['photo_200_orig']
+        when 'original_x2'
+          raw_info['photo_400_orig']
         else
           raw_info['photo_50']
         end
