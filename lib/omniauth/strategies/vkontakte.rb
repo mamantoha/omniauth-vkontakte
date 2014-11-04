@@ -64,6 +64,10 @@ module OmniAuth
           }
 
           result = access_token.get('/method/users.get', :params => params).parsed["response"]
+          
+          if error = result['error']
+            raise CallbackError.new(:validation_required, error['error_msg'], error['redirect_uri'])
+          end
 
           raise NoRawData, result unless (result.is_a?(Array) and result.first)
           result.first
