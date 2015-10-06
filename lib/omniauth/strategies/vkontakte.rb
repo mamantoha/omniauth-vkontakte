@@ -98,7 +98,7 @@ module OmniAuth
 
       def callback_url
         if options.redirect_url.nil?
-          full_host + script_name + callback_path
+          super
         else
           options.redirect_url
         end
