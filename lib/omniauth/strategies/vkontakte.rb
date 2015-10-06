@@ -29,6 +29,8 @@ module OmniAuth
 
       option :authorize_options, [:scope, :display]
 
+      option :redirect_url, nil
+
       uid { raw_info['id'].to_s }
 
       # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
@@ -93,6 +95,14 @@ module OmniAuth
       end
 
       private
+
+      def callback_url
+        if options.redirect_url.nil?
+          full_host + script_name + callback_path
+        else
+          options.redirect_url
+        end
+      end
 
       def info_options
         # http://vk.com/dev/fields
