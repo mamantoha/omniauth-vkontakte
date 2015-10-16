@@ -15,7 +15,7 @@ module OmniAuth
     class Vkontakte < OmniAuth::Strategies::OAuth2
       class NoRawData < StandardError; end
 
-      API_VERSION = '5.2'
+      API_VERSION = '5.8'
 
       DEFAULT_SCOPE = ''
 
@@ -97,7 +97,7 @@ module OmniAuth
       def info_options
         # http://vk.com/dev/fields
         fields = %w[nickname screen_name sex city country online bdate photo_50 photo_100 photo_200 photo_200_orig photo_400_orig]
-        fields.concat(options[:info_fields].split(',')) if options[:info_fields] 
+        fields.concat(options[:info_fields].split(',')) if options[:info_fields]
         return fields.join(',')
       end
 
@@ -122,38 +122,10 @@ module OmniAuth
         end
       end
 
-      # http://vk.com/dev/database.getCountriesById
-      def get_country
-        if raw_info['country'] && raw_info['country'] != "0"
-          params = {
-            :country_ids => raw_info['country'],
-            :lang        => lang_option,
-            :v           => API_VERSION,
-          }
-          country = access_token.get('/method/database.getCountriesById', :params => params).parsed['response']
-          country && country.first ? country.first['title'] : ''
-        else
-          ''
-        end
-      end
-
-      # http://vk.com/dev/database.getCitiesById
-      def get_city
-        if raw_info['city'] && raw_info['city'] != "0"
-          params = {
-            :city_ids => raw_info['city'],
-            :lang     => lang_option,
-            :v        => API_VERSION,
-          }
-          city = access_token.get('/method/database.getCitiesById', :params => params).parsed['response']
-          city && city.first ? city.first['title'] : ''
-        else
-          ''
-        end
-      end
-
       def location
-        @location ||= [get_country, get_city].map(&:strip).reject(&:empty?).join(', ')
+        country = raw_info.fetch('country', {})['title']
+        city = raw_info.fetch('city', {})['title']
+        @location ||= [country, city].compact.join(', ')
       end
 
       def callback_phase
