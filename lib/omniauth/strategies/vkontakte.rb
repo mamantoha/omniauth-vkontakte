@@ -97,11 +97,7 @@ module OmniAuth
       private
 
       def callback_url
-        if options.redirect_url.nil?
-          super
-        else
-          options.redirect_url
-        end
+        options.redirect_url || super
       end
 
       def info_options
