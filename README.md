@@ -21,6 +21,7 @@ You can configure several options, which you pass in to the `provider` method vi
 * `image_size`: defines the size of the user's image. Valid options include `mini`(50x50), `bigger`(100x100), `bigger_x2`(200x200), `original`(200x*) and `original_x2`(400x*). Default is `mini`.
 * `info_fields`: specify which fields should be added to AuthHash when
   getting the user's info. Value should be a comma-separated string as per http://vk.com/dev/fields.
+* `redirect_url`: URL where code will be passed. This URL shall be a part of the domain specified in application settings http://vk.com/dev/auth_sites.
 
 Here's an example of a possible configuration:
 
