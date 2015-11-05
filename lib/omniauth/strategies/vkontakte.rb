@@ -97,7 +97,7 @@ module OmniAuth
       private
 
       def callback_url
-        options.redirect_url || super
+        options.redirect_url || (full_host + script_name + callback_path)
       end
 
       def info_options
