@@ -1,0 +1,5 @@
+.ruby-version
+.DS_Store
+coverage
+Gemfile.lock
+.idea
