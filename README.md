@@ -1,5 +1,9 @@
 # OmniAuth VKontakte
 
+[![Build Status][travis_badge]][travis]
+[![Gem Version][rubygems_badge]][rubygems]
+[![Code Climate][codeclimate_badge]][codeclimate]
+
 This is the unofficial [OmniAuth](https://github.com/intridea/omniauth) strategy for authenticating to VKontakte via OAuth.
 To use it, you'll need to sign up for an OAuth2 Application ID and Secret
 on the [Vkontakte Developers Page](http://vk.com/dev).
