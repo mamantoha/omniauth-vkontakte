@@ -86,9 +86,12 @@ The precise information available may depend on the permissions which you reques
 
 Tested with the following Ruby versions:
 
+- MRI 2.2.0
+- MRI 2.1.0
 - MRI 2.0.0
 - MRI 1.9.3
-
+- JRUBY 1.x
+- 
 ## Contributing to omniauth-vkontakte
 
 * Fork, fix, then send me a pull request.
