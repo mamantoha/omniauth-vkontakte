@@ -36,7 +36,7 @@ module OmniAuth
       # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
       info do
         {
-          :name       => [raw_info['first_name'], raw_info['last_name']].map(&:strip).reject(&:empty?).join(' '),
+          :name       => "#{raw_info['first_name']} #{raw_info['last_name']}".strip,
           :nickname   => raw_info['nickname'],
           :email      => access_token.params["email"],
           :first_name => raw_info['first_name'],
