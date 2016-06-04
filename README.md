@@ -26,6 +26,7 @@ You can configure several options, which you pass in to the `provider` method vi
 * `info_fields`: specify which fields should be added to AuthHash when
   getting the user's info. Value should be a comma-separated string as per http://vk.com/dev/fields.
 * `redirect_url`: URL where code will be passed. This URL shall be a part of the domain specified in application settings http://vk.com/dev/auth_sites.
+* `https`: 1 - allows you to receive https links to photos and other media. 0 - return an http links (the default).
 
 Here's an example of a possible configuration:
 
@@ -36,6 +37,7 @@ use OmniAuth::Builder do
       :scope => 'friends,audio,photos',
       :display => 'popup',
       :lang => 'en',
+      :https => 1,
       :image_size => 'original'
     }
 end

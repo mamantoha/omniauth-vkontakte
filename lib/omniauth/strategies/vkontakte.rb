@@ -60,6 +60,7 @@ module OmniAuth
           params = {
             :fields   => info_options,
             :lang     => lang_option,
+            :https    => https_option,
             :v        => API_VERSION,
           }
 
@@ -107,6 +108,10 @@ module OmniAuth
 
       def lang_option
         options[:lang] || ''
+      end
+
+      def https_option
+        options[:https] || 0
       end
 
       def image_url
