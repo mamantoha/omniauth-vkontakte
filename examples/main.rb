@@ -1,10 +1,9 @@
-require 'rubygems'
-require 'bundler'
-
-Bundler.setup :default, :development, :example
+require 'pp'
 require 'sinatra'
 require 'omniauth'
 require 'omniauth-vkontakte'
+
+configure { set :server, :puma }
 
 SCOPE = 'friends,audio'
 
@@ -13,10 +12,10 @@ use Rack::Session::Cookie
 use OmniAuth::Builder do
   provider :vkontakte,  ENV['VKONTAKTE_KEY'], ENV['VKONTAKTE_SECRET']
     {
-      :scope => SCOPE,
-      :display => 'mobile',
-      :lang => 'en',
-      :image_size => 'original'
+      scope:      SCOPE,
+      display:    'web',
+      lang:       'en',
+      image_size: 'original'
     }
 end
 
