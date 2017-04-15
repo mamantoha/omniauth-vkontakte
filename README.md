@@ -8,15 +8,33 @@ This is the unofficial [OmniAuth](https://github.com/intridea/omniauth) strategy
 To use it, you'll need to sign up for an OAuth2 Application ID and Secret
 on the [Vkontakte Developers Page](http://vk.com/dev).
 
-## Basic Usage
+## Installing
+
+Add to your `Gemfile`:
 
 ```ruby
-use OmniAuth::Builder do
+gem 'omniauth-vkontakte'
+```
+
+Then `bundle install`
+
+## Usage
+
+`OmniAuth::Strategies::Vkontakte` is simply a Rack middleware.
+
+Here's a quick example, adding the middleware to a Rails app in `config/initializers/omniauth.rb`:
+
+```ruby
+Rails.application.config.middleware.use OmniAuth::Builder do
   provider :vkontakte, ENV['API_KEY'], ENV['API_SECRET']
 end
 ```
 
+[See the example Sinatra app](https://github.com/mamantoha/omniauth-vkontakte/blob/master/examples/main.rb).
+
+
 ## Configuring
+
 You can configure several options, which you pass in to the `provider` method via a `Hash`:
 
 * `scope`: a comma-separated list of access permissions you want to request from the user. [Read the Vkontakte docs for more details](http://vk.com/dev/permissions)
@@ -88,12 +106,8 @@ The precise information available may depend on the permissions which you reques
 
 Tested with the following Ruby versions:
 
-- MRI 2.3
-- MRI 2.2
-- MRI 2.1
-- MRI 2.0
-- MRI 1.9.3
-- JRUBY 1.x
+- Ruby MRI (1.9.3+)
+- JRuby (1.9 mode)
 
 ## Contributing to omniauth-vkontakte
 
@@ -101,7 +115,7 @@ Tested with the following Ruby versions:
 
 ## License
 
-Copyright (c) 2011-2016 Anton Maminov
+Copyright (c) 2011-2017 Anton Maminov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
