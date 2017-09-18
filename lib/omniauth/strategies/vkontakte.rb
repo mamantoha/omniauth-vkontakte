@@ -72,15 +72,16 @@ module OmniAuth
       end
 
 
-      # You can pass +display+ or +scope+ params to the auth request, if
-      # you need to set them dynamically.
+      # You can pass +display+, +revoke+ or +scope+ params to the auth request,
+      # if you need to set them dynamically.
       #
       # http://vk.com/dev/oauth_dialog
       #
+      # +revoke+ revokes access and re-authorizes user.
       def authorize_params
         super.tap do |params|
           # just a copypaste from ominauth-facebook
-          %w[display state scope].each do |v|
+          %w[display state scope revoke].each do |v|
             if request.params[v]
               params[v.to_sym] = request.params[v]
 
