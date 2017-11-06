@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'sinatra'
+gem 'omniauth-vkontakte', path: '../'
 gem 'puma'
-gem 'omniauth-vkontakte', :path => '../'
+gem 'sinatra'
