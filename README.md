@@ -1,6 +1,6 @@
 # OmniAuth VKontakte
 
-[![Build Status][travis_badge]][travis]
+[![Build Status](https://travis-ci.org/mamantoha/omniauth-vkontakte.svg?branch=master)](https://travis-ci.org/mamantoha/omniauth-vkontakte)
 [![Gem Version][rubygems_badge]][rubygems]
 [![Maintainability](https://api.codeclimate.com/v1/badges/1ea61cb860f9f6aafb4f/maintainability)](https://codeclimate.com/github/mamantoha/omniauth-vkontakte/maintainability)
 
@@ -116,9 +116,6 @@ Tested with the following Ruby versions:
 Copyright: 2011-2017 Anton Maminov (anton.maminov@gmail.com)
 
 This library is distributed under the MIT license. Please see the LICENSE file.
-
-[travis_badge]: http://img.shields.io/travis/mamantoha/omniauth-vkontakte.svg?style=flat
-[travis]: https://travis-ci.org/mamantoha/omniauth-vkontakte
 
 [rubygems_badge]: http://img.shields.io/gem/v/omniauth-vkontakte.svg?style=flat
 [rubygems]: http://rubygems.org/gems/omniauth-vkontakte
