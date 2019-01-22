@@ -113,7 +113,7 @@ Tested with the following Ruby versions:
 
 ## License
 
-Copyright: 2011-2017 Anton Maminov (anton.maminov@gmail.com)
+Copyright: 2011-2019 Anton Maminov (anton.maminov@gmail.com)
 
 This library is distributed under the MIT license. Please see the LICENSE file.
 
