@@ -1,9 +1,11 @@
-require "omniauth-vkontakte/version"
-require "omniauth"
+require 'omniauth/vkontakte/version'
+require 'omniauth'
 
+# :nodoc:
 module OmniAuth
+  # :nodoc:
   module Strategies
-    autoload :Vkontakte,  'omniauth/strategies/vkontakte'
+    autoload :Vkontakte, 'omniauth/strategies/vkontakte'
   end
 end
 

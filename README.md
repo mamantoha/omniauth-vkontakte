@@ -1,9 +1,8 @@
 # OmniAuth VKontakte
 
-[![Build Status][travis_badge]][travis]
+[![Build Status](https://travis-ci.org/mamantoha/omniauth-vkontakte.svg?branch=master)](https://travis-ci.org/mamantoha/omniauth-vkontakte)
 [![Gem Version][rubygems_badge]][rubygems]
-[![Code Climate][codeclimate_badge]][codeclimate]
-[![Dependency Status][gemnasium_badge]][gemnasium]
+[![Maintainability](https://api.codeclimate.com/v1/badges/1ea61cb860f9f6aafb4f/maintainability)](https://codeclimate.com/github/mamantoha/omniauth-vkontakte/maintainability)
 
 This is the unofficial [OmniAuth](https://github.com/intridea/omniauth) strategy for authenticating to VKontakte via OAuth.
 To use it, you'll need to sign up for an OAuth2 Application ID and Secret
@@ -105,8 +104,8 @@ The precise information available may depend on the permissions which you reques
 
 Tested with the following Ruby versions:
 
-- Ruby MRI (1.9.3+)
-- JRuby (1.9 mode)
+- Ruby MRI (2.3.0+)
+- JRuby
 
 ## Contributing to omniauth-vkontakte
 
@@ -118,14 +117,5 @@ Copyright: 2011-2017 Anton Maminov (anton.maminov@gmail.com)
 
 This library is distributed under the MIT license. Please see the LICENSE file.
 
-[travis_badge]: http://img.shields.io/travis/mamantoha/omniauth-vkontakte.svg?style=flat
-[travis]: https://travis-ci.org/mamantoha/omniauth-vkontakte
-
 [rubygems_badge]: http://img.shields.io/gem/v/omniauth-vkontakte.svg?style=flat
 [rubygems]: http://rubygems.org/gems/omniauth-vkontakte
-
-[codeclimate_badge]: http://img.shields.io/codeclimate/github/mamantoha/omniauth-vkontakte.svg?style=flat
-[codeclimate]: https://codeclimate.com/github/mamantoha/omniauth-vkontakte
-
-[gemnasium_badge]: http://img.shields.io/gemnasium/mamantoha/omniauth-vkontakte.svg?style=flat
-[gemnasium]: https://gemnasium.com/github.com/mamantoha/omniauth-vkontakte
