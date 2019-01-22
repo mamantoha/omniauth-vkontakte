@@ -1,9 +1,7 @@
-# encoding: utf-8
-
 require 'spec_helper'
 
 describe OmniAuth::Strategies::Vkontakte do
-  let(:request) { double('Request', :params => {}, :cookies => {}, :env => {}) }
+  let(:request) { double('Request', params: {}, cookies: {}, env: {}) }
 
   before do
     OmniAuth.config.test_mode = true
@@ -19,7 +17,7 @@ describe OmniAuth::Strategies::Vkontakte do
     @access_token = double('OAuth2::AccessToken')
     allow(obj).to receive(:access_token).and_return(@access_token)
     allow(@access_token).to receive(:get).and_return(double('OAuth2::Response'))
-    allow(@access_token).to receive(:params).and_return({ 'email' => raw_info_hash['email'] })
+    allow(@access_token).to receive(:params).and_return('email' => raw_info_hash['email'])
     obj
   end
 
@@ -78,40 +76,40 @@ describe OmniAuth::Strategies::Vkontakte do
   describe 'image_size option' do
     context 'when user has an image' do
       it 'should return image with size specified' do
-        @options = { :image_size => 'original' }
+        @options = { image_size: 'original' }
         allow(subject).to receive(:raw_info).and_return(
-            raw_info_hash.merge({ 'photo_200_orig' => img_url })
+          raw_info_hash.merge('photo_200_orig' => img_url)
         )
         expect(subject.info[:image]).to eq(img_url)
       end
 
       it 'should return image with size specified' do
-        @options = { :image_size => 'original_x2' }
+        @options = { image_size: 'original_x2' }
         allow(subject).to receive(:raw_info).and_return(
-            raw_info_hash.merge({ 'photo_400_orig' => img_url })
+          raw_info_hash.merge('photo_400_orig' => img_url)
         )
         expect(subject.info[:image]).to eq(img_url)
       end
 
       it 'should return bigger image when bigger size specified' do
-        @options = { :image_size => 'bigger' }
+        @options = { image_size: 'bigger' }
         allow(subject).to receive(:raw_info).and_return(
-            raw_info_hash.merge({ 'photo_100' => img_url })
+          raw_info_hash.merge('photo_100' => img_url)
         )
         expect(subject.info[:image]).to eq(img_url)
       end
 
       it 'should return mini image when mini size specified' do
-        @options = { :image_size => 'mini' }
+        @options = { image_size: 'mini' }
         allow(subject).to receive(:raw_info).and_return(
-            raw_info_hash.merge({ 'photo_50' => img_url })
+          raw_info_hash.merge('photo_50' => img_url)
         )
         expect(subject.info[:image]).to eq(img_url)
       end
 
       it 'should return normal image by default' do
         allow(subject).to receive(:raw_info).and_return(
-            raw_info_hash.merge({ 'photo_50' => img_url })
+          raw_info_hash.merge('photo_50' => img_url)
         )
         expect(subject.info[:image]).to eq(img_url)
       end
@@ -121,8 +119,8 @@ describe OmniAuth::Strategies::Vkontakte do
   describe 'skip_info option' do
     context 'when skip info option is enabled' do
       it 'should not include raw_info in extras hash' do
-        @options = { :skip_info => true }
-        allow(subject).to receive(:raw_info).and_return({:foo => 'bar'})
+        @options = { skip_info: true }
+        allow(subject).to receive(:raw_info).and_return(foo: 'bar')
         expect(subject.extra[:raw_info]).to eq(nil)
       end
     end
@@ -131,12 +129,12 @@ describe OmniAuth::Strategies::Vkontakte do
   describe 'request_phase' do
     context 'with no request params set and redirect_url specified' do
       before do
-        @options = { :redirect_url => 'http://www.example.com/auth/vkontakte/callback' }
+        @options = { redirect_url: 'http://www.example.com/auth/vkontakte/callback' }
         allow(subject).to receive(:env).and_return({})
         allow(subject).to receive(:request).and_return(
-          double('Request', {:params => {}, :scheme => 'https',
-                             :url => 'https://oauth.vk.com/authorize',
-                             :cookies => {}, :env => {}})
+          double('Request', params: {}, scheme: 'https',
+                            url: 'https://oauth.vk.com/authorize',
+                            cookies: {}, env: {})
         )
         allow(subject).to receive(:request_phase).and_return(:whatever)
       end
