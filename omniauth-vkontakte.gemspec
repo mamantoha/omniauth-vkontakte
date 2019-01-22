@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['anton.linux@gmail.com']
   gem.summary       = 'Vkontakte OAuth2 Strategy for OmniAuth'
   gem.homepage      = 'https://github.com/mamantoha/omniauth-vkontakte'
-  gem.license       = 'MIT'
+  gem.licenses      = ['MIT']
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
