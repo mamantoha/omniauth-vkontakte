@@ -1,4 +1,4 @@
-require File.expand_path('lib/omniauth-vkontakte/version', __dir__)
+require File.expand_path('lib/omniauth/vkontakte/version', __dir__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ['Anton Maminov']

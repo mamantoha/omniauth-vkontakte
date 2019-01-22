@@ -7,6 +7,10 @@ describe OmniAuth::Strategies::Vkontakte do
     OmniAuth.config.test_mode = true
   end
 
+  it 'should have version' do
+    expect(OmniAuth::Vkontakte::VERSION).to_not be_nil
+  end
+
   subject do
     args = ['api_key', 'api_secret', @options || {}].compact
     obj = OmniAuth::Strategies::Vkontakte.new(*args).tap do |strategy|

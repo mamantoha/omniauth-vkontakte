@@ -1,4 +1,4 @@
-require 'omniauth-vkontakte/version'
+require 'omniauth/vkontakte/version'
 require 'omniauth'
 
 # :nodoc:
