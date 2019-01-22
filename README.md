@@ -1,5 +1,6 @@
 # OmniAuth VKontakte
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/149c0614deef469faa49e1e8ae384bd3)](https://app.codacy.com/app/mamantoha/omniauth-vkontakte?utm_source=github.com&utm_medium=referral&utm_content=mamantoha/omniauth-vkontakte&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/mamantoha/omniauth-vkontakte.svg?branch=master)](https://travis-ci.org/mamantoha/omniauth-vkontakte)
 [![Gem Version][rubygems_badge]][rubygems]
 [![Maintainability](https://api.codeclimate.com/v1/badges/1ea61cb860f9f6aafb4f/maintainability)](https://codeclimate.com/github/mamantoha/omniauth-vkontakte/maintainability)
