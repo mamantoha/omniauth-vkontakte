@@ -101,7 +101,10 @@ module OmniAuth
 
       def info_options
         # http://vk.com/dev/fields
-        fields = %w[nickname screen_name sex city country online bdate photo_50 photo_100 photo_200 photo_200_orig photo_400_orig]
+        fields = %w[
+          nickname screen_name sex city country online bdate
+          photo_50 photo_100 photo_200 photo_200_orig photo_400_orig
+        ]
         fields.concat(options[:info_fields].split(',')) if options[:info_fields]
         fields.join(',')
       end
