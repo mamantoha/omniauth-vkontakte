@@ -3,7 +3,6 @@
 [![Build Status][travis_badge]][travis]
 [![Gem Version][rubygems_badge]][rubygems]
 [![Code Climate][codeclimate_badge]][codeclimate]
-[![Dependency Status][gemnasium_badge]][gemnasium]
 
 This is the unofficial [OmniAuth](https://github.com/intridea/omniauth) strategy for authenticating to VKontakte via OAuth.
 To use it, you'll need to sign up for an OAuth2 Application ID and Secret
@@ -126,6 +125,3 @@ This library is distributed under the MIT license. Please see the LICENSE file.
 
 [codeclimate_badge]: http://img.shields.io/codeclimate/github/mamantoha/omniauth-vkontakte.svg?style=flat
 [codeclimate]: https://codeclimate.com/github/mamantoha/omniauth-vkontakte
-
-[gemnasium_badge]: http://img.shields.io/gemnasium/mamantoha/omniauth-vkontakte.svg?style=flat
-[gemnasium]: https://gemnasium.com/github.com/mamantoha/omniauth-vkontakte
