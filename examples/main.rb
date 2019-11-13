@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pp'
 require 'sinatra'
 require 'omniauth'
@@ -5,7 +7,7 @@ require 'omniauth-vkontakte'
 
 configure { set :server, :puma }
 
-SCOPE = 'friends,audio'.freeze
+SCOPE = 'friends,audio'
 
 use Rack::Session::Cookie
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'omniauth/strategies/oauth2'
 
 module OmniAuth
@@ -13,9 +15,9 @@ module OmniAuth
     class Vkontakte < OmniAuth::Strategies::OAuth2
       class NoRawData < StandardError; end
 
-      API_VERSION = '5.8'.freeze
+      API_VERSION = '5.8'
 
-      DEFAULT_SCOPE = ''.freeze
+      DEFAULT_SCOPE = ''
 
       option :name, 'vkontakte'
 
