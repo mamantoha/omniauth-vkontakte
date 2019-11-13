@@ -50,14 +50,12 @@ Here's an example of a possible configuration:
 
 ```ruby
 use OmniAuth::Builder do
-  provider :vkontakte, ENV['API_KEY'], ENV['API_SECRET'],
-    {
-      :scope => 'friends,audio,photos',
-      :display => 'popup',
-      :lang => 'en',
-      :https => 1,
-      :image_size => 'original'
-    }
+  provider :vkontakte, ENV['VKONTAKTE_KEY'], ENV['VKONTAKTE_SECRET'],
+           scope: 'friends,audio,photos',
+           display: 'popup',
+           lang: 'en',
+           https: 1,
+           image_size: 'original'
 end
 ```
 
