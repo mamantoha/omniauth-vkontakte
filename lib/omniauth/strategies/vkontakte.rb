@@ -58,13 +58,6 @@ module OmniAuth
         access_token.options[:mode] = :query
         access_token.options[:param_name] = :access_token
         @raw_info ||= begin
-          params = {
-            fields: info_options,
-            lang: lang_option,
-            https: https_option,
-            v: API_VERSION
-          }
-
           result = access_token.get('/method/users.get', params: params).parsed['response']
 
           raise NoRawData, result unless result.is_a?(Array) && result.first
@@ -96,6 +89,15 @@ module OmniAuth
       end
 
       private
+
+      def params
+        {
+          fields: info_options,
+          lang: lang_option,
+          https: https_option,
+          v: API_VERSION
+        }
+      end
 
       def callback_url
         options.redirect_url || (full_host + script_name + callback_path)
