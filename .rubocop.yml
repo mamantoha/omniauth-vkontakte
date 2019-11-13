@@ -4,5 +4,8 @@ Metrics/MethodLength:
   Enabled: false
 Metrics/BlockLength:
   Enabled: false
-
-
+Metrics/ClassLength:
+  Max: 101
+Naming/FileName:
+  Exclude:
+    - 'lib/omniauth-vkontakte.rb'
