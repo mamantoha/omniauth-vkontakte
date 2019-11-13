@@ -14,5 +14,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
   gem.version       = OmniAuth::Vkontakte::VERSION
 
-  gem.add_runtime_dependency 'omniauth-oauth2', '~> 1.5'
+  gem.add_runtime_dependency 'omniauth-oauth2', ['>= 1.5', '<= 1.6']
 end
