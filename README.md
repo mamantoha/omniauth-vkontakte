@@ -27,7 +27,7 @@ Here's a quick example, adding the middleware to a Rails app in `config/initiali
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :vkontakte, ENV['API_KEY'], ENV['API_SECRET']
+  provider :vkontakte, ENV['VK_API_ID'], ENV['VK_API_SECRET']
 end
 ```
 
