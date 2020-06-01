@@ -15,7 +15,7 @@ module OmniAuth
     class Vkontakte < OmniAuth::Strategies::OAuth2
       class NoRawData < StandardError; end
 
-      API_VERSION = '5.8'
+      API_VERSION = '5.107'
 
       DEFAULT_SCOPE = ''
 
