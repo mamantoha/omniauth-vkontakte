@@ -4,7 +4,7 @@ require File.expand_path('lib/omniauth/vkontakte/version', __dir__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ['Anton Maminov']
-  gem.email         = ['anton.linux@gmail.com']
+  gem.email         = ['anton.maminov@gmail.com']
   gem.summary       = 'Vkontakte OAuth2 Strategy for OmniAuth'
   gem.homepage      = 'https://github.com/mamantoha/omniauth-vkontakte'
   gem.licenses      = ['MIT']
