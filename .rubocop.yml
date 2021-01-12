@@ -9,6 +9,8 @@ Metrics/BlockLength:
   Enabled: false
 Metrics/ClassLength:
   Max: 101
+Lint/DuplicateBranch:
+  Enabled: false
 Naming/FileName:
   Exclude:
     - 'lib/omniauth-vkontakte.rb'

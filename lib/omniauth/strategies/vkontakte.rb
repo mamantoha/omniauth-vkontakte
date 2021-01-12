@@ -133,6 +133,8 @@ module OmniAuth
           raw_info['photo_200_orig']
         when 'original_x2'
           raw_info['photo_400_orig']
+        else
+          raw_info['photo_50']
         end
       end
 
