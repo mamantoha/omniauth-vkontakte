@@ -7,8 +7,8 @@ jobs:
     name: build (${{ matrix.ruby }} / ${{ matrix.os }})
     strategy:
       matrix:
-        ruby: [ 3.0, 2.7, 2.6, head ]
-        os: [ ubuntu-latest, macos-latest ]
+        ruby: [2.6, 2.7, 3.0, head, jruby, jruby-head]
+        os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@master
