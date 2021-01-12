@@ -103,8 +103,8 @@ The precise information available may depend on the permissions which you reques
 
 Tested with the following Ruby versions:
 
-- Ruby MRI (2.3.0+)
-- JRuby
+- Ruby MRI (2.5.0+)
+- JRuby (9.2.0+)
 
 ## Contributing to omniauth-vkontakte
 
@@ -112,7 +112,7 @@ Tested with the following Ruby versions:
 
 ## License
 
-Copyright: 2011-2020 Anton Maminov (anton.maminov@gmail.com)
+Copyright: 2011-2021 Anton Maminov (anton.maminov@gmail.com)
 
 This library is distributed under the MIT license. Please see the LICENSE file.
 
