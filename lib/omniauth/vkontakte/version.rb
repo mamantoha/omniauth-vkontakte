@@ -2,6 +2,6 @@
 
 module OmniAuth
   module Vkontakte
-    VERSION = '1.6.1'
+    VERSION = '1.7.0'
   end
 end
