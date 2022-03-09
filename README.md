@@ -9,6 +9,8 @@ This is the unofficial [OmniAuth](https://github.com/intridea/omniauth) strategy
 To use it, you'll need to sign up for an OAuth2 Application ID and Secret
 on the [Vkontakte Developers Page](http://vk.com/dev).
 
+![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2.svg)
+
 ## Installing
 
 Add to your `Gemfile`:
