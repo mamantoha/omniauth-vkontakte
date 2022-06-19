@@ -105,8 +105,8 @@ The precise information available may depend on the permissions which you reques
 
 Tested with the following Ruby versions:
 
-- Ruby MRI (2.5.0+)
-- JRuby (9.2.0+)
+- Ruby MRI (2.6.0+)
+- JRuby (9.3.0+)
 
 ## Contributing to omniauth-vkontakte
 
