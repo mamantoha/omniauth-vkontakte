@@ -108,9 +108,13 @@ Tested with the following Ruby versions:
 - Ruby MRI (2.7.0+)
 - JRuby (9.3.0+)
 
-## Contributing to omniauth-vkontakte
+## Contributing
 
-* Fork, fix, then send me a pull request.
+1. Fork it (<https://github.com/mamantoha/omniauth-vkontakte/fork>)
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Add some feature')
+4. Push to the branch (git push origin my-new-feature)
+5. Create a new Pull Request
 
 ## License
 
