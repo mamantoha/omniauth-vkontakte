@@ -43,6 +43,10 @@ describe OmniAuth::Strategies::Vkontakte do
     it 'should have correct token url' do
       expect(subject.options.client_options.token_url).to eq('https://oauth.vk.com/access_token')
     end
+
+    it 'should have correct auth_scheme' do
+      expect(subject.options.client_options.auth_scheme).to eq(:request_body)
+    end
   end
 
   describe 'info' do
