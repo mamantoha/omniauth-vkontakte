@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = 'omniauth-vkontakte'
   gem.require_paths = ['lib']
   gem.version       = OmniAuth::Vkontakte::VERSION
-  gem.required_ruby_version = '>= 2.6.0'
+  gem.required_ruby_version = '>= 2.7.0'
   gem.add_runtime_dependency 'omniauth-oauth2', '>= 1.5', '<= 1.8.0'
   gem.metadata['rubygems_mfa_required'] = 'true'
 end
