@@ -21,10 +21,12 @@ module OmniAuth
 
       option :name, 'vkontakte'
 
-      option :client_options,
-             site: 'https://api.vk.com/',
-             token_url: 'https://oauth.vk.com/access_token',
-             authorize_url: 'https://oauth.vk.com/authorize'
+      option :client_options, {
+        site: 'https://api.vk.com/',
+        token_url: 'https://oauth.vk.com/access_token',
+        authorize_url: 'https://oauth.vk.com/authorize',
+        auth_scheme: :request_body
+      }
 
       option :authorize_options, %i[scope display]
 

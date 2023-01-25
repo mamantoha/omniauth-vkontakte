@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'pp'
 require 'sinatra'
 require 'omniauth'
 require 'omniauth-vkontakte'
