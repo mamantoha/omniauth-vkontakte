@@ -6,6 +6,7 @@ gemspec
 
 group :development do
   gem 'rubocop', require: false
+  gem 'ruby-lsp'
 end
 
 group :test do
