@@ -7,7 +7,7 @@ module OmniAuth
     # Authenticate to Vkontakte utilizing OAuth 2.0 and retrieve
     # basic user information.
     # documentation available here:
-    # http://vk.com/dev/authentication
+    # http://vk.ru/dev/authentication
     #
     # @example Basic Usage
     #     use OmniAuth::Strategies::Vkontakte, 'API Key', 'Secret Key'
@@ -22,9 +22,9 @@ module OmniAuth
       option :name, 'vkontakte'
 
       option :client_options, {
-        site: 'https://api.vk.com/',
-        token_url: 'https://oauth.vk.com/access_token',
-        authorize_url: 'https://oauth.vk.com/authorize',
+        site: 'https://api.vk.ru/',
+        token_url: 'https://oauth.vk.ru/access_token',
+        authorize_url: 'https://oauth.vk.ru/authorize',
         auth_scheme: :request_body
       }
 
@@ -45,7 +45,7 @@ module OmniAuth
           image: image_url,
           location: location,
           urls: {
-            'Vkontakte' => "http://vk.com/#{raw_info['screen_name']}"
+            'Vkontakte' => "http://vk.ru/#{raw_info['screen_name']}"
           }
         }
       end
@@ -71,7 +71,7 @@ module OmniAuth
       # You can pass +display+, +revoke+ or +scope+ params to the auth request,
       # if you need to set them dynamically.
       #
-      # http://vk.com/dev/oauth_dialog
+      # http://vk.ru/dev/oauth_dialog
       #
       # +revoke+ revokes access and re-authorizes user.
       def authorize_params
@@ -106,7 +106,7 @@ module OmniAuth
       end
 
       def info_options
-        # http://vk.com/dev/fields
+        # http://vk.ru/dev/fields
         fields = %w[
           nickname screen_name sex city country online bdate
           photo_50 photo_100 photo_200 photo_200_orig photo_400_orig

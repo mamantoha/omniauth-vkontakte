@@ -7,7 +7,7 @@
 
 This is the unofficial [OmniAuth](https://github.com/intridea/omniauth) strategy for authenticating to VKontakte via OAuth.
 To use it, you'll need to sign up for an OAuth2 Application ID and Secret
-on the [Vkontakte Developers Page](http://vk.com/dev).
+on the [Vkontakte Developers Page](http://vk.ru/dev).
 
 ![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2.svg)
 
@@ -39,13 +39,13 @@ end
 
 You can configure several options, which you pass in to the `provider` method via a `Hash`:
 
-* `scope`: a comma-separated list of access permissions you want to request from the user. [Read the Vkontakte docs for more details](http://vk.com/dev/permissions)
+* `scope`: a comma-separated list of access permissions you want to request from the user. [Read the Vkontakte docs for more details](http://vk.ru/dev/permissions)
 * `display`: the display context to show the authentication page. Valid options include `page`, `popup` and `mobile`.
 * `lang`: specifies the language. Optional options include `ru`, `ua`, `be`, `en`, `es`, `fi`, `de`, `it`.
 * `image_size`: defines the size of the user's image. Valid options include `mini`(50x50), `bigger`(100x100), `bigger_x2`(200x200), `original`(200x*) and `original_x2`(400x*). Default is `mini`.
 * `info_fields`: specify which fields should be added to AuthHash when
-  getting the user's info. Value should be a comma-separated string as per http://vk.com/dev/fields.
-* `redirect_url`: URL where code will be passed. This URL shall be a part of the domain specified in application settings http://vk.com/dev/auth_sites.
+  getting the user's info. Value should be a comma-separated string as per http://vk.ru/dev/fields.
+* `redirect_url`: URL where code will be passed. This URL shall be a part of the domain specified in application settings http://vk.ru/dev/auth_sites.
 * `https`: 1 - allows you to receive https links to photos and other media. 0 - return an http links (the default).
 
 Here's an example of a possible configuration:
@@ -75,7 +75,7 @@ Here's an example *Auth Hash* available in `request.env['omniauth.auth']`:
    "last_name"=>"Дуров",
    "image"=>"http://cs7001.vk.me/c7003/v7003079/374b/53lwetwOxD8.jpg",
    "location"=>"Росiя, Санкт-Петербург",
-   "urls"=>{"Vkontakte"=>"http://vk.com/durov"}},
+   "urls"=>{"Vkontakte"=>"http://vk.ru/durov"}},
  "credentials"=>
   {"token"=>
     "187041a618229fdaf16613e96e1caabc1e86e46bbfad228de41520e63fe45873684c365a14417289599f3",
