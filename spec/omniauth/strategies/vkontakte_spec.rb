@@ -33,15 +33,15 @@ describe OmniAuth::Strategies::Vkontakte do
     end
 
     it 'should have correct site' do
-      expect(subject.options.client_options.site).to eq('https://api.vk.com/')
+      expect(subject.options.client_options.site).to eq('https://api.vk.ru/')
     end
 
     it 'should have correct authorize url' do
-      expect(subject.options.client_options.authorize_url).to eq('https://oauth.vk.com/authorize')
+      expect(subject.options.client_options.authorize_url).to eq('https://oauth.vk.ru/authorize')
     end
 
     it 'should have correct token url' do
-      expect(subject.options.client_options.token_url).to eq('https://oauth.vk.com/access_token')
+      expect(subject.options.client_options.token_url).to eq('https://oauth.vk.ru/access_token')
     end
 
     it 'should have correct auth_scheme' do
@@ -79,7 +79,7 @@ describe OmniAuth::Strategies::Vkontakte do
     end
 
     it 'should returns the urls' do
-      expect(subject.info[:urls]['Vkontakte']).to eq("http://vk.com/#{raw_info_hash['screen_name']}")
+      expect(subject.info[:urls]['Vkontakte']).to eq("http://vk.ru/#{raw_info_hash['screen_name']}")
     end
   end
 
@@ -143,7 +143,7 @@ describe OmniAuth::Strategies::Vkontakte do
         allow(subject).to receive(:env).and_return({})
         allow(subject).to receive(:request).and_return(
           double('Request', params: {}, scheme: 'https',
-                            url: 'https://oauth.vk.com/authorize',
+                            url: 'https://oauth.vk.ru/authorize',
                             cookies: {}, env: {})
         )
         allow(subject).to receive(:request_phase).and_return(:whatever)
