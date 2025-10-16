@@ -106,7 +106,6 @@ The precise information available may depend on the permissions which you reques
 Tested with the following Ruby versions:
 
 - Ruby MRI (3.2.0+)
-- JRuby (9.3.0+)
 
 ## Contributing
 
