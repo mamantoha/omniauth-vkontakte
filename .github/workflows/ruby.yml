@@ -7,7 +7,7 @@ jobs:
     name: build (${{ matrix.ruby }} / ${{ matrix.os }})
     strategy:
       matrix:
-        ruby: [3.2, 3.3, 3.4, head, jruby, jruby-head]
+        ruby: [3.2, 3.3, 3.4, head, jruby-head]
         os: [ubuntu-latest, macos-14]
     runs-on: ${{ matrix.os }}
     steps:
